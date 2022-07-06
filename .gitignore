@@ -1,2 +1,17 @@
 /.ipynb_checkpoints
+/00_Codes/Doc2vec/Dataset/News_text
+/00_Codes/Doc2vec/Dataset/training_checkpoints
+/00_Codes/GNL
+/00_Codes/data_set
+/01_NewsMain
+/01_NewsList
+/02_NewsComment
+/03_CommentWords
+/04_CreateText
 /99_Analyzer
+/Untitled Folder/*/*
+# /Untitled Folder/__pycache__
+# /Untitled Folder/date
+# /Untitled Folder/data
+# /Untitled Folder/media
+# /Untitled Folder/results
