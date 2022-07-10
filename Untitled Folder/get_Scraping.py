@@ -77,7 +77,11 @@ def get_comment():
             
             for title in d_:
                 print(title)
-                driver.get(f'{d_[title][0]}{comment}')
+                try:
+                    driver.get(f'{d_[title][0]}{comment}')
+                except:
+                    time.sleep(10)
+                    driver.get(f'{d_[title][0]}{comment}')
                 comments = []
                 print(driver.current_url)
                 count = ''
@@ -98,11 +102,18 @@ def get_comment():
                 print(pagenation)
             
                 for i in range(int(pagenation)):
-                    driver.get(f'{d_[title][0]}{comment}{page}{i+1}{order}')
-                    print(driver.current_url)
-                    comment_elements = driver.find_elements(By.CLASS_NAME,'ccpTzz')
-                    comments += [comment.text for comment in comment_elements]
-            
+                    try:
+                        driver.get(f'{d_[title][0]}{comment}{page}{i+1}{order}')
+                        print(driver.current_url)
+                        comment_elements = driver.find_elements(By.CLASS_NAME,'ccpTzz')
+                        comments += [comment.text for comment in comment_elements]
+                    except:
+                        time.sleep(10)
+                        driver.get(f'{d_[title][0]}{comment}{page}{i+1}{order}')
+                        print(driver.current_url)
+                        comment_elements = driver.find_elements(By.CLASS_NAME,'ccpTzz')
+                        comments += [comment.text for comment in comment_elements]
+
                 with open(f'{path}/{c}/comments/{title.replace("/", "-")}.pkl',"wb")as f:
                     pickle.dump(comments,f)
                     print('saved')
